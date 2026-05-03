@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Skill", menuName = "Scriptable Objects/Skill")]
@@ -30,13 +31,23 @@ public class AttackSkill : Skill
     public override void Execute(SkillContext context)
     {
         Debug.Log("7: AttackSkill Execute");
-        context.Caster.PlayAnimation();
+        context.Caster.PlayAnimation(SkillType.AttackSkill, context.Caster.isDefending);
         context.Caster.OnAnimationEnd += OnAnimationComplete;
 
         void OnAnimationComplete(object sender, EventArgs e)
         {
+            Fighter animatorOwner = sender as Fighter;
+            if (context.Caster != animatorOwner)    return;
+
+            Debug.Log("10: Target gets damaged");
             context.Caster.OnAnimationEnd -= OnAnimationComplete;
-            context.Target.GetDamaged(10); //for now, each attack decreases health by 10
+            Debug.Log("Health before: " + context.Target.GetHealth());
+            if (context.Target.isDefending)
+                context.Target.GetDamaged(5);
+            else
+                context.Target.GetDamaged(10);
+            Debug.Log("Health after: " + context.Target.GetHealth());
+            context.Caster.RaiseOnSkillCompleted(this, context.Caster, context.Target, this);
         }
     }
 }
@@ -47,13 +58,17 @@ public class DefenseSkill : Skill
     public override void Execute(SkillContext context)
     {
         Debug.Log("7: DefenseSkill Execute");
-        context.Caster.PlayAnimation();
+        context.Caster.PlayAnimation(SkillType.DefenseSkill, context.Caster.isDefending);
         context.Caster.OnAnimationEnd += OnAnimationComplete;
 
         void OnAnimationComplete(object sender, EventArgs e)
         {
+            Fighter animatorOwner = sender as Fighter;
+            if (context.Caster != animatorOwner)    return;
+
             context.Caster.OnAnimationEnd -= OnAnimationComplete;
             context.Caster.isDefending = true;
+            context.Caster.RaiseOnSkillCompleted(this, context.Caster, context.Target, this);
         }
     }
 }
@@ -64,13 +79,17 @@ public class HealSkill : Skill
     public override void Execute(SkillContext context)
     {
         Debug.Log("7: HealSkill Execute");
-        context.Caster.PlayAnimation();
+        context.Caster.PlayAnimation(SkillType.HealSkill, context.Caster.isDefending);
         context.Caster.OnAnimationEnd += OnAnimationComplete;
 
         void OnAnimationComplete(object sender, EventArgs e)
         {
+            Fighter animatorOwner = sender as Fighter;
+            if (context.Caster != animatorOwner)    return;
+
             context.Caster.OnAnimationEnd -= OnAnimationComplete;
             context.Caster.Heal(15); //for now, heal by 15 health
+            context.Caster.RaiseOnSkillCompleted(this, context.Caster, context.Target, this);
         }
     }
 }

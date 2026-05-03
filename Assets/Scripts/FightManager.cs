@@ -8,6 +8,7 @@ public class FightManager : MonoBehaviour
 {
     public static FightManager Instance { get; private set; }
 
+    //EventArgs to get info through events such as fighter, target and the skill that is used
     public class FighterArgs : EventArgs
     {
         public Fighter Fighter;
@@ -36,6 +37,10 @@ public class FightManager : MonoBehaviour
 
     [SerializeField] List<Button> skillButtons; //from left to right: attack, defense, heal
     [SerializeField] List<Skill> SOskills;
+
+    public Skill attackSkill;
+    public Skill defendSkill;
+    public Skill healSkill;
 
     public Dictionary<Skill, Button> skillMapping = new();
 
@@ -70,6 +75,8 @@ public class FightManager : MonoBehaviour
     private void Start()
     {
         OnTurnChanged += TurnChanged;
+        Player.Instance.OnSkillCompleted += CompletePlayerSkill;
+        Enemy.Instance.OnSkillCompleted += CompleteEnemySkill;
         StartFight();
     }
 
@@ -84,8 +91,32 @@ public class FightManager : MonoBehaviour
         else
         {
             Debug.Log("enemy's turn");
-            Enemy.Instance.Fight();
+            DetectAnySkillButtonClicked(Enemy.Instance);
+            //Enemy.Instance.Fight();
         }
+    }
+
+    //call ending animations to manage turns one after another
+    private void CompletePlayerSkill(object sender, FighterArgs fighterArgs)
+    {
+        Debug.Log("12: Player's skill is completed and turn is changed.");
+        CompleteFighterSkill(fighterArgs);
+        currentTurn = Turn.Enemy;
+    }
+
+    private void CompleteEnemySkill(object sender, FighterArgs fighterArgs)
+    {
+        CompleteFighterSkill(fighterArgs);
+        currentTurn = Turn.Player;
+    }
+
+    //set isDefending when that fighter's turn is over
+    private void CompleteFighterSkill(FighterArgs fighterArgs)
+    {
+        if (fighterArgs.Skill == defendSkill)
+            fighterArgs.Fighter.isDefending = true;
+        else
+            fighterArgs.Fighter.isDefending = false;
     }
 
     private void StartFight()
@@ -100,23 +131,31 @@ public class FightManager : MonoBehaviour
     {
         Debug.Log("4: DetectAnySkillButtonClicked");
         Fighter targetFighter = fighter == Player.Instance ? Enemy.Instance : Player.Instance;
-        foreach (Button skillButton in skillButtons)
-        {
-            skillButton.onClick.RemoveAllListeners();
 
-            skillButton.onClick.AddListener(() => {
-                fighter.OnSkillChosen += ChoosePlayerSkill;
-                //invoke OnSkillChosen
-                fighter.RaiseOnSkillChosen(this, fighter, targetFighter, skillMapping.FirstOrDefault(x => x.Value == skillButton).Key);
-                ClearAllButtonListeners();
-            });
+        if (fighter == Player.Instance)
+            foreach (Button skillButton in skillButtons)
+            {
+                skillButton.onClick.RemoveAllListeners();
+
+                skillButton.onClick.AddListener(() => {
+                    fighter.OnSkillChosen += ChooseFighterSkill;
+                    //invoke OnSkillChosen
+                    fighter.RaiseOnSkillChosen(this, fighter, targetFighter, skillMapping.FirstOrDefault(x => x.Value == skillButton).Key);
+                    ClearAllButtonListeners();
+                });
+            }
+        else //do Enemy's Fight method in here
+        {
+            Skill chosenSkill = Enemy.Instance.DecideOnAndGetSkill();
+            fighter.OnSkillChosen += ChooseFighterSkill;
+            fighter.RaiseOnSkillChosen(this, fighter, targetFighter, chosenSkill);
         }
     }
 
-    private void ChoosePlayerSkill(object sender, FighterArgs fighterArgs) //this is called when player has chosen a skill
+    private void ChooseFighterSkill(object sender, FighterArgs fighterArgs) //this is called when player has chosen a skill
     {
         Debug.Log("6: ChoosePlayerSkill");
-        Player.Instance.OnSkillChosen -= ChoosePlayerSkill;
+        fighterArgs.Fighter.OnSkillChosen -= ChooseFighterSkill;
 
         fighterArgs.Skill.Execute(new SkillContext(fighterArgs.Fighter, fighterArgs.TargetFighter, SkillFinished));
     }

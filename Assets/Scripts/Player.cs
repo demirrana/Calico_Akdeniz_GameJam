@@ -4,8 +4,9 @@ public class Player : Fighter
 {
     public static Player Instance { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         SetSingleton();
     }
 
