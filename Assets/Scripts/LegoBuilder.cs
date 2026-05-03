@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 // ============================================================
 // LegoBuilder.cs
@@ -216,27 +217,83 @@ public class LegoBuilder : MonoBehaviour
     /// </summary>
     public void ExportModel()
     {
-        SpriteExporter exporter = FindObjectOfType<SpriteExporter>();
+        SpriteExporter exporter = FindObjectOfType<SpriteExporter>(true);
         if (exporter == null)
         {
             Debug.LogWarning("LegoBuilder: SpriteExporter bulunamadı!");
             return;
         }
 
-        // Sadece grid'e yerleştirilmiş parçaları topla
-        List<LegoPiece> placed = new List<LegoPiece>();
+        // ── Export öncesi: dragged olmayan parçaları gizle ──
+        List<LegoPiece> hiddenPieces = new List<LegoPiece>();
         foreach (var piece in allPieces)
         {
-            if (piece.IsPlaced) placed.Add(piece);
+            if (!piece.WasEverDragged && piece.BodyRenderer != null)
+            {
+                piece.BodyRenderer.enabled = false;
+                hiddenPieces.Add(piece);
+                // Face child renderer da kapat
+                var face = piece.transform.Find("Face");
+                if (face != null)
+                {
+                    var faceR = face.GetComponent<SpriteRenderer>();
+                    if (faceR != null) faceR.enabled = false;
+                }
+            }
         }
 
-        if (placed.Count == 0)
+        // Yerleştirilmiş tüm parçaları export et (görünür olanlar render edilecek)
+        List<LegoPiece> toExport = new List<LegoPiece>();
+        foreach (var piece in allPieces)
         {
-            Debug.LogWarning("LegoBuilder: Henüz yerleştirilmiş parça yok, export iptal.");
-            return;
+            if (piece.IsPlaced) toExport.Add(piece);
         }
 
-        exporter.Export(placed);
+        if (toExport.Count > 0)
+        {
+            Debug.Log($"[LegoBuilder] {toExport.Count} parça export ediliyor.");
+            exporter.Export(toExport);
+        }
+        else
+        {
+            Debug.LogWarning("LegoBuilder: Yerleştirilmiş parça yok, export iptal.");
+        }
+
+        // ── Export sonrası: gizlenen parçaları geri göster ──
+        foreach (var piece in hiddenPieces)
+        {
+            if (piece.BodyRenderer != null)
+                piece.BodyRenderer.enabled = true;
+            var face = piece.transform.Find("Face");
+            if (face != null)
+            {
+                var faceR = face.GetComponent<SpriteRenderer>();
+                if (faceR != null) faceR.enabled = true;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Parçanın sprite bounds'u kameranın görüş alanı içinde mi?
+    /// </summary>
+    private bool IsInsideCamera(LegoPiece piece, Camera cam)
+    {
+        if (piece.BodyRenderer == null || piece.BodyRenderer.sprite == null) 
+            return false;
+
+        Bounds b = piece.BodyRenderer.bounds;
+
+        // Kameranın orthographic dikdörtgeni
+        float halfH = cam.orthographicSize;
+        float halfW = halfH * cam.aspect;
+        Vector3 c = cam.transform.position;
+        float minX = c.x - halfW, maxX = c.x + halfW;
+        float minY = c.y - halfH, maxY = c.y + halfH;
+
+        // Bounds tamamen dışarıda mı?
+        if (b.max.x < minX || b.min.x > maxX) return false;
+        if (b.max.y < minY || b.min.y > maxY) return false;
+        return true;
     }
 
     // ── Yardımcı: Scatter alanını editor'da göster ────────────
@@ -249,4 +306,14 @@ public class LegoBuilder : MonoBehaviour
 
     // ── Public Getter'lar ─────────────────────────────────────
     public List<LegoPiece> GetAllPieces() => allPieces;
+
+
+    /// <summary>
+    /// Önce export et, sonra GameScene'e geç.
+    /// </summary>
+    public void ExportAndGoToGame()
+    {
+        ExportModel();
+        SceneManager.LoadScene("GameScene");
+    }
 }

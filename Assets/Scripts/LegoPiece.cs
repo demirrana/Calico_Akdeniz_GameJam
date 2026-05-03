@@ -14,6 +14,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class LegoPiece : MonoBehaviour
 {
+    // Bu parça en az bir kere kullanıcı tarafından sürüklendi mi?
+    private bool wasEverDragged = false;
+    public bool WasEverDragged => wasEverDragged;
+
     [Header("Drag Ayarı")]
     [Tooltip("Sürüklerken parça mouse'un kaç birim üstünde dursun (ghost ile çakışmasın)")]
     public float dragLiftAmount = 1.5f;
@@ -153,6 +157,7 @@ public class LegoPiece : MonoBehaviour
     private void StartDragging()
     {
         isDragging = true;
+        wasEverDragged = true;
         isSelected = true;
 
         // Eğer parça daha önce grid'e yerleşmişse grid'den kaldır

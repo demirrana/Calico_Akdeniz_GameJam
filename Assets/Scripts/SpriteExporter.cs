@@ -20,6 +20,11 @@ using System.Collections.Generic;
 
 public class SpriteExporter : MonoBehaviour
 {
+    // ── Sahneler Arası Aktarım ────────────────────────────────
+    // Static — sahne değişse bile bu Sprite hayatta kalır
+    public static Sprite LastExportedSprite { get; private set; }
+    public static string LastExportedPath { get; private set; }
+
     [Header("Export Kamerası")]
     [Tooltip("Sadece lego parçalarını gören ayrı kamera")]
     public Camera exportCamera;
@@ -56,7 +61,7 @@ public class SpriteExporter : MonoBehaviour
         }
 
         // ── 1. Kamerayı tüm parçaları kapsayacak şekilde konumlandır ──
-        FrameAllPieces(pieces);
+        //FrameAllPieces(pieces);
 
         // ── 2. RenderTexture oluştur ──────────────────────────────────
         RenderTexture renderTexture = new RenderTexture(textureWidth, textureHeight, 24);
@@ -96,6 +101,10 @@ public class SpriteExporter : MonoBehaviour
 
         // ── 7. Sprite olarak döndür (oyun içi kullanım için) ──────────
         Sprite exportedSprite = Texture2DToSprite(exportTexture);
+
+        // Sonraki sahnenin erişebilmesi için sakla
+        LastExportedSprite = exportedSprite;
+        LastExportedPath = savedPath;
 
         return exportedSprite;
     }
