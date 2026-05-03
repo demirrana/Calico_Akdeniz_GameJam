@@ -127,25 +127,56 @@ public class LegoBuilder : MonoBehaviour
     // ── Scatter Pozisyon Bulucu ───────────────────────────────
 
     /// <summary>
-    /// Scatter alanı içinde, mevcut parçalardan minPieceDistance uzakta
-    /// rastgele bir pozisyon döner. Bulamazsa son denemeyi döner.
+    /// Grid hücrelerinden rastgele bir tanesini seçer ve dünya pozisyonunu döner.
+    /// Mevcut parçalardan minPieceDistance uzakta olanları tercih eder.
     /// </summary>
     private Vector3 FindRandomScatterPosition(List<Vector3> existingPositions)
     {
-        Vector3 center = scatterCenter != null ? scatterCenter.position : Vector3.zero;
-        const int maxAttempts = 30;
+        var grid = LegoGrid.Instance;
+        if (grid == null)
+        {
+            Debug.LogWarning("[LegoBuilder] LegoGrid bulunamadı, fallback pozisyon kullanılıyor.");
+            return Vector3.zero;
+        }
 
-        Vector3 lastTry = center;
+        // Ana kameranın görüş alanını hesapla (orthographic varsayılır)
+        Camera mainCam = Camera.main;
+        float camPadding = 1f; // Kenara çok yakın olmasın diye iç boşluk
+        float camMinX = 0, camMaxX = 0, camMinY = 0, camMaxY = 0;
+        bool useCamFilter = false;
+
+        if (mainCam != null && mainCam.orthographic)
+        {
+            float halfH = mainCam.orthographicSize - camPadding;
+            float halfW = halfH * mainCam.aspect;
+            Vector3 cp = mainCam.transform.position;
+            camMinX = cp.x - halfW;
+            camMaxX = cp.x + halfW;
+            camMinY = cp.y - halfH;
+            camMaxY = cp.y + halfH;
+            useCamFilter = true;
+        }
+
+        const int maxAttempts = 100;
+        Vector3 lastTry = Vector3.zero;
 
         for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
-            // Scatter alanı içinde rastgele nokta
-            float x = Random.Range(-scatterSize.x * 0.5f, scatterSize.x * 0.5f);
-            float y = Random.Range(-scatterSize.y * 0.5f, scatterSize.y * 0.5f);
-            Vector3 candidate = center + new Vector3(x, y, 0f);
+            int col = Random.Range(0, grid.gridCols);
+            int row = Random.Range(0, grid.gridRows);
+
+            Vector3 candidate = grid.GridToWorld(col, row, 0);
             lastTry = candidate;
 
-            // Mevcut parçalarla mesafe kontrolü
+            // Kamera dışındaysa atla
+            if (useCamFilter)
+            {
+                if (candidate.x < camMinX || candidate.x > camMaxX ||
+                    candidate.y < camMinY || candidate.y > camMaxY)
+                    continue;
+            }
+
+            // Mesafe kontrolü
             bool tooClose = false;
             foreach (var existing in existingPositions)
             {
@@ -159,11 +190,8 @@ public class LegoBuilder : MonoBehaviour
             if (!tooClose) return candidate;
         }
 
-        // 30 denemede uygun yer bulunamadıysa son denemeyi kullan
-        // (alanı büyütmek veya parça sayısını azaltmak gerekebilir)
         return lastTry;
     }
-
     // ── Geçersiz Drop İade ────────────────────────────────────
 
     /// <summary>

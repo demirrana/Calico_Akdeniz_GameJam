@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045dea7ee32773c498a5384e2443ed6a, type: 3}
+  m_Name: Piece_Large_YELLOW
+  m_EditorClassIdentifier: Assembly-CSharp::LegoPieceData
+  pieceName: 
+  gridWidth: 2
+  gridHeight: 6
+  pieceSprite: {fileID: 21300000, guid: a44cc3fa12a07f44198374992ce188e1, type: 3}
+  faceSpriteRight: {fileID: 21300000, guid: a44cc3fa12a07f44198374992ce188e1, type: 3}
+  spriteOffset: {x: -0.003, y: -0.261}
+  spriteOffsetRotated: {x: -0.006, y: -0.254}
+  pieceColor: {r: 1, g: 1, b: 1, a: 1}
