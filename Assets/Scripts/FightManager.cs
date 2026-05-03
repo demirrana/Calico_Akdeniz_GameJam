@@ -47,6 +47,19 @@ public class FightManager : MonoBehaviour
     private Turn previousTurn;
     private Turn currentTurn; //this is changed through other methods
 
+    public Turn GetCurrentTurn()
+    {
+        return currentTurn;
+    }
+
+    public void Reset()
+    {
+        previousTurn = Turn.Player;
+        previousTurn = Turn.Enemy;
+        Player.Instance.Reset();
+        Enemy.Instance.Reset();
+    }
+
     private void Awake()
     {
         SetSingleton();
@@ -157,7 +170,17 @@ public class FightManager : MonoBehaviour
         Debug.Log("6: ChoosePlayerSkill");
         fighterArgs.Fighter.OnSkillChosen -= ChooseFighterSkill;
 
-        fighterArgs.Skill.Execute(new SkillContext(fighterArgs.Fighter, fighterArgs.TargetFighter, SkillFinished));
+        if (currentTurn == Turn.Enemy && fighterArgs.Skill == attackSkill) //parry chance
+        {
+            StartCoroutine(ParryManager.Instance.TryParry(GameManager.Instance.GetCurrentLevel(), () => //!!!!!!!!!!!!!!!!!!!!!!!!! level instead of 1
+            {
+                fighterArgs.Skill.Execute(new SkillContext(fighterArgs.Fighter, fighterArgs.TargetFighter, SkillFinished));
+            }));
+        }
+        else
+        {
+            fighterArgs.Skill.Execute(new SkillContext(fighterArgs.Fighter, fighterArgs.TargetFighter, SkillFinished));   
+        }
     }
 
     private void SkillFinished()
@@ -175,8 +198,21 @@ public class FightManager : MonoBehaviour
 
     private void Update()
     {
+        DetectLevelFinished();
         DetectTurnChange();
+    }
 
+    private void DetectLevelFinished()
+    {
+        if (Enemy.Instance.GetHealth() <= 0) //player got past this level
+        {
+            GameManager.Instance.RaiseOnLevelCompleted(this);
+            //successful window
+        }
+        else if (Player.Instance.GetHealth() <= 0) //player has to go through the same level
+        {
+            //fail window
+        }
     }
 
     //Triggers event OnTurnChanged when isPlayersTurn bool is changed
