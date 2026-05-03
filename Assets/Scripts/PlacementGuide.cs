@@ -16,11 +16,9 @@ public class PlacementGuide : MonoBehaviour
     // ── Inspector Ayarları ────────────────────────────────────
 
     [Header("Renk Ayarları")]
-    [Tooltip("Yerleştirme geçerliyken ghost rengi")]
-    public Color validColor = new Color(0f, 1f, 0.3f, 0.4f);   // Yeşil şeffaf
-
-    [Tooltip("Yerleştirme geçersizken ghost rengi")]
-    public Color invalidColor = new Color(1f, 0.2f, 0.2f, 0.4f); // Kırmızı şeffaf
+    public Color validColor = new Color(0f, 1f, 0.3f, 0.4f);     // yeşil = zemin
+    public Color stackingColor = new Color(1f, 0.9f, 0f, 0.4f);  // sarı = üste koyma
+    public Color invalidColor = new Color(1f, 0.2f, 0.2f, 0.4f); // kırmızı = geçersiz
 
     [Header("Guide Sprite Renderer")]
     // Bu, Guide objesinin kendi SpriteRenderer'ı
@@ -62,7 +60,7 @@ public class PlacementGuide : MonoBehaviour
     /// Her frame sürükleme sırasında çağrılır.
     /// Snap pozisyonunu ve rengi günceller.
     /// </summary>
-    public void UpdateGuide(Vector3 snapPos, bool isValid, bool isRotated = false)
+    public void UpdateGuide(Vector3 snapPos, bool isValid, bool isRotated = false, bool isStacking = false)
     {
         if (!isActive || ghostRenderer == null) return;
 
@@ -70,7 +68,12 @@ public class PlacementGuide : MonoBehaviour
         transform.position = snapPos;
 
         // Geçerlilik durumuna göre rengi değiştir
-        ghostRenderer.color = isValid ? validColor : invalidColor;
+        if (!isValid)
+            ghostRenderer.color = invalidColor;
+        else if (isStacking)
+            ghostRenderer.color = stackingColor;
+        else
+            ghostRenderer.color = validColor;
 
          // Parça döndürülmüşse ghost da yatay flip
         ghostRenderer.flipX = isRotated;

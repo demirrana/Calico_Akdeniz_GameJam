@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlacementGuide
   validColor: {r: 0, g: 1, b: 0.3, a: 0.4}
+  stackingColor: {r: 1, g: 0.9, b: 0, a: 0.4}
   invalidColor: {r: 1, g: 0.2, b: 0.2, a: 0.4}
   ghostRenderer: {fileID: 1245524906}
 --- !u!4 &655926715
@@ -661,10 +662,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LegoGrid
   gridCols: 60
   gridRows: 60
-  maxLayers: 5
+  maxLayers: 10
   cellSizeX: 0.47
   cellSizeY: 0.14
-  layerHeight: 4.6
+  layerHeight: 0.7
   showGridGizmos: 1
   gizmoColor: {r: 0, g: 0.8, b: 1, a: 0.3}
 --- !u!4 &1804419964

@@ -236,6 +236,104 @@ public class LegoGrid : MonoBehaviour
         return (snapPos, new Vector3Int(col, row, layer), valid);
     }
 
+    /// <summary>
+    /// Akıllı snap: önce mouse pozisyonunda parça var mı bakar,
+    /// varsa onun ÜSTÜNE oturmayı önerir. Yoksa zemine düşürür.
+    /// </summary>
+    public (Vector3 worldPos, Vector3Int cell, bool isValid, bool isStacking)
+        GetSmartSnapPoint(Vector3 mouseWorldPos, LegoPieceData data, LegoPiece draggedPiece)
+    {
+        int gw = draggedPiece.EffectiveGridWidth;
+        int gh = draggedPiece.EffectiveGridHeight;
+
+        // Merkez offset
+        float midCol = (gw - 1) * 0.5f;
+        float midRow = (gh - 1) * 0.5f;
+        Vector3 centerOffset = new Vector3(
+            (midCol - midRow) * cellSizeX * 0.5f,
+            (midCol + midRow) * cellSizeY * 0.5f,
+            0f);
+
+        // ── 1. Mouse altında bir parça var mı? (LegoPiece layer'ında) ──
+        // Sürüklenen parçanın kendi collider'ını sayma
+        Collider2D[] hits = Physics2D.OverlapPointAll(mouseWorldPos);
+        LegoPiece pieceUnderMouse = null;
+        foreach (var hit in hits)
+        {
+            var lp = hit.GetComponent<LegoPiece>();
+            if (lp != null && lp != draggedPiece && lp.IsPlaced)
+            {
+                pieceUnderMouse = lp;
+                break;
+            }
+        }
+
+        int col, row, layer;
+        bool isStacking = false;
+
+        if (pieceUnderMouse != null)
+        {
+            // ── ÜSTE KOYMA MODU (deneme) ──
+            int targetLayer = pieceUnderMouse.gridPosition.z + 1;
+
+            // Layer yüksekliğini telafi ederek col/row'u mouse'tan hesapla
+            Vector3 cornerWorld = mouseWorldPos - centerOffset;
+            cornerWorld.y -= targetLayer * layerHeight;
+
+            Vector3Int baseCell = WorldToGrid(cornerWorld, 0);
+            int tryCol = baseCell.x;
+            int tryRow = baseCell.y;
+
+            // ⭐ Lego mantığı: parçanın EN AZ BİR hücresinin altı dolu olmalı
+            // (yani en az bir stud bağlantı yeterli)
+            bool hasSupport = false;
+            for (int c = 0; c < gw; c++)
+            {
+                for (int r = 0; r < gh; r++)
+                {
+                    if (IsCellOccupied(tryCol + c, tryRow + r, targetLayer - 1))
+                    {
+                        hasSupport = true;
+                        break;
+                    }
+                }
+                if (hasSupport) break;
+            }
+
+            if (hasSupport)
+            {
+                // En az bir stud destekli → stacking onaylandı
+                col = tryCol;
+                row = tryRow;
+                layer = targetLayer;
+                isStacking = true;
+            }
+            else
+            {
+                // Hiç destek yok → zemin moduna düş
+                Vector3 cornerWorld2 = mouseWorldPos - centerOffset;
+                Vector3Int baseCell2 = WorldToGrid(cornerWorld2, 0);
+                col = baseCell2.x;
+                row = baseCell2.y;
+                layer = GetTopLayer(col, row);
+            }
+        }
+        else
+        {
+            // ── ZEMİN MODU ──
+            Vector3 cornerWorld = mouseWorldPos - centerOffset;
+            Vector3Int baseCell = WorldToGrid(cornerWorld, 0);
+            col = baseCell.x;
+            row = baseCell.y;
+            layer = GetTopLayer(col, row);
+        }
+
+        bool valid = CanPlacePieceSized(gw, gh, col, row, layer);
+        Vector3 snapPos = GridToWorld(col, row, layer) + centerOffset;
+
+        return (snapPos, new Vector3Int(col, row, layer), valid, isStacking);
+    }
+
     // Yeni helper: data yerine direkt boyut alır
     public bool CanPlacePieceSized(int gw, int gh, int col, int row, int layer)
     {
@@ -263,7 +361,7 @@ public class LegoGrid : MonoBehaviour
             for (int r = 0; r <= gridRows; r++)
             {
                 Vector3 pos = GridToWorld(c, r, 0);
-                Gizmos.DrawSphere(pos, 0.03f);
+                Gizmos.DrawSphere(pos, 0.01f);
             }
         }
         // Dolu hücreleri kırmızı kare olarak göster

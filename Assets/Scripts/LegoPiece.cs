@@ -193,11 +193,14 @@ public class LegoPiece : MonoBehaviour
         // Placement guide'ı güncelle: en yakın snap noktasını bul
         if (placementGuide != null)
         {
-            var (snapPos, cell, isValid) = LegoGrid.Instance.GetSnapPoint(
-                mouseWorld + dragOffset, data, this);
+            // Mouse'un gerçek hedef pozisyonu (lift olmadan)
+            Vector3 target = mouseWorld + dragOffset;
+
+            var (snapPos, cell, isValid, isStacking) = LegoGrid.Instance.GetSmartSnapPoint(
+                target, data, this);
             //Debug.Log($"[DRAG]  pos={transform.position} | snapPos={snapPos} | cell={cell} | valid={isValid}");
             // Parça yerleşince snapPos + spriteOffset'e gidiyor → ghost da öyle göstersin
-            placementGuide.UpdateGuide(snapPos + (Vector3)EffectiveSpriteOffset, isValid, isRotated);
+            placementGuide.UpdateGuide(snapPos + (Vector3)EffectiveSpriteOffset, isValid, isRotated, isStacking);
         }
     }
 
@@ -206,16 +209,16 @@ public class LegoPiece : MonoBehaviour
         //Debug.Log($"[GRID] instance: {LegoGrid.Instance.GetInstanceID()} | pos: {LegoGrid.Instance.transform.position} | cellX:{LegoGrid.Instance.cellSizeX} cellY:{LegoGrid.Instance.cellSizeY}");
         isDragging = false;
         Vector3 mouseWorld = GetMouseWorldPosition();
-
+        Vector3 target = mouseWorld + dragOffset;
 
         // En yakın snap noktasına yerleştir
-        var (snapPos, cell, isValid) = LegoGrid.Instance.GetSnapPoint(
-            mouseWorld + dragOffset, data, this);
+        var (snapPos, cell, isValid, isStacking) = LegoGrid.Instance.GetSmartSnapPoint(
+            target, data, this);
         //Debug.Log($"[STOP] çağıran: {gameObject.name} | placed parça sayısı kontrol...");
-        var grid = LegoGrid.Instance;
-        var field = typeof(LegoGrid).GetField("occupiedCells", 
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        var dict = field.GetValue(grid) as System.Collections.IDictionary;
+        // var grid = LegoGrid.Instance;
+        // var field = typeof(LegoGrid).GetField("occupiedCells", 
+        //     System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        // var dict = field.GetValue(grid) as System.Collections.IDictionary;
         //Debug.Log($"[STOP] grid'de dolu hücre sayısı: {dict.Count}");
         //Debug.Log($"[STOP]  pos={transform.position} | snapPos={snapPos} | cell={cell} | valid={isValid}");
 

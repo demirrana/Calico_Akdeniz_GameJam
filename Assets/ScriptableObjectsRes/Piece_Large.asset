@@ -18,5 +18,5 @@ MonoBehaviour:
   pieceSprite: {fileID: 21300000, guid: 19b3feba99e20f548b86cd3d15f0422c, type: 3}
   faceSpriteRight: {fileID: 21300000, guid: 19b3feba99e20f548b86cd3d15f0422c, type: 3}
   spriteOffset: {x: -0.003, y: -0.261}
-  spriteOffsetRotated: {x: 0.93, y: -0.272}
+  spriteOffsetRotated: {x: -0.006, y: -0.254}
   pieceColor: {r: 1, g: 1, b: 1, a: 1}
