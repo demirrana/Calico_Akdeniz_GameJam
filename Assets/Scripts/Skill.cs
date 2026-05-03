@@ -47,6 +47,7 @@ public class AttackSkill : Skill
             else
                 context.Target.GetDamaged(10);
             Debug.Log("Health after: " + context.Target.GetHealth());
+            context.Target.RaiseOnHealthChanged(sender, context.Target.GetHealth());
             context.Caster.RaiseOnSkillCompleted(this, context.Caster, context.Target, this);
         }
     }

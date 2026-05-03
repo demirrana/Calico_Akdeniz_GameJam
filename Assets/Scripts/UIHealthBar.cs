@@ -3,21 +3,26 @@ using UnityEngine.UI;
 
 public class UIHealthBar : MonoBehaviour
 {
-    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Image healthFillImage;
     [SerializeField] private Fighter fighter;
+
+    private float maxHealthValue;
+    private float healthValue;
 
     private void Start()
     {
         // Set the slider's max value based on the fighter's stats
-        //healthSlider.maxValue = fighter.MaxHealth;
-        //healthSlider.value = fighter.CurrentHealth;
+        maxHealthValue = fighter.GetMaxHealth();
+        healthValue = fighter.GetHealth();
 
         // Subscribe to a health change event if you have one
-        //fighter.OnHealthChanged += UpdateHealthBar;
+        fighter.OnHealthChanged += UpdateHealthBar;
     }
 
-    private void UpdateHealthBar(int newHealth)
+    private void UpdateHealthBar(object sender, int newHealth)
     {
-        healthSlider.value = newHealth;
+        float fillRatio = (float)newHealth / maxHealthValue;
+        healthFillImage.fillAmount = fillRatio;
+        Debug.Log("UpdateHealthBar to " + newHealth);
     }
 }

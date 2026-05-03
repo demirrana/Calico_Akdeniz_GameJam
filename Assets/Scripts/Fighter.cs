@@ -8,7 +8,10 @@ public class Fighter : MonoBehaviour
     public event EventHandler OnAnimationEnd;
     public event EventHandler<FightManager.FighterArgs> OnSkillCompleted; //triggered when animation is finished and its effect is safely applied
     
+    public event EventHandler<int> OnHealthChanged;
+
     [SerializeField] protected int health = 100;
+    private int maxHealth;
 
     //Animation related variables
     private Animator fighterAnimator;
@@ -25,6 +28,7 @@ public class Fighter : MonoBehaviour
     {
         fighterAnimator = GetComponent<Animator>();
         SetInitialSkills();
+        maxHealth = health;
     }
 
     private void SetInitialSkills()
@@ -82,6 +86,16 @@ public class Fighter : MonoBehaviour
         Debug.Log("11: Raise Complete Skill");
         FightManager.FighterArgs f = new(fighter, targetFighter, skill);
         OnSkillCompleted?.Invoke(sender, f);
+    }
+
+    public void RaiseOnHealthChanged(object sender, int newHealth)
+    {
+        OnHealthChanged?.Invoke(sender, newHealth);
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 
     public int GetHealth()
