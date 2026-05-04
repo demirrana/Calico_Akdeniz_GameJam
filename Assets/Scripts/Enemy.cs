@@ -4,7 +4,7 @@ public class Enemy : Fighter
 {
     public static Enemy Instance { get; private set; }
 
-    [SerializeField] private SpriteRenderer enemySpriteRenderer;
+    [SerializeField] public SpriteRenderer enemySpriteRenderer;
 
     protected override void Awake()
     {

@@ -31,18 +31,67 @@ public class AttackSkill : Skill
 
             context.Caster.OnAnimationEnd -= OnAnimationComplete;
             Debug.Log("Health before: " + context.Target.GetHealth());
-            if (ParryManager.Instance.IsParryActive) //parry occurred (whether successful or not)
+
+            if (context.Caster == Enemy.Instance && GameManager.Instance.enemySprites[2] == Enemy.Instance.enemySpriteRenderer)
             {
-                if (ParryManager.Instance.IsParrySuccessful()) //enemy gets damaged
+                if (ParryManager.Instance.IsParryActive) //parry occurred (whether successful or not)
                 {
-                    Debug.Log("Parry is successful!");
-                    AudioManager.Instance.PlayOneShotSFX("Parry");
-                    context.Caster.GetDamaged(normalDamage);
-                    context.Caster.RaiseOnHealthChanged(sender, context.Caster.GetHealth()); //show it in UI
+                    if (ParryManager.Instance.IsParrySuccessful()) //enemy gets damaged
+                    {
+                        Debug.Log("Parry is successful!");
+                        AudioManager.Instance.PlayOneShotSFX("Parry");
+                        context.Caster.GetDamaged(bearDamage);
+                        context.Caster.RaiseOnHealthChanged(sender, context.Caster.GetHealth()); //show it in UI
+                    }
+                    else //failed parry (may vary from the "else" below)
+                    {
+                        Debug.Log("Parry is NOT successful");
+                        if (context.Target.isDefending)
+                            context.Target.GetDamaged(defensedBearDamage);
+                        else
+                            context.Target.GetDamaged(bearDamage);
+
+                        context.Target.RaiseOnHealthChanged(sender, context.Target.GetHealth()); //show it in UI
+                    }
+                    ParryManager.Instance.IsParryActive = false;
                 }
-                else //failed parry (may vary from the "else" below)
+                else
                 {
-                    Debug.Log("Parry is NOT successful");
+                    Debug.Log("NO PARRY");
+                    if (context.Target.isDefending)
+                        context.Target.GetDamaged(defensedBearDamage);
+                    else
+                        context.Target.GetDamaged(bearDamage);
+
+                    context.Target.RaiseOnHealthChanged(sender, context.Target.GetHealth()); //show it in UI
+                }
+            }
+            else
+            {
+                    if (ParryManager.Instance.IsParryActive) //parry occurred (whether successful or not)
+                {
+                    if (ParryManager.Instance.IsParrySuccessful()) //enemy gets damaged
+                    {
+                        Debug.Log("Parry is successful!");
+                        AudioManager.Instance.PlayOneShotSFX("Parry");
+                        context.Caster.GetDamaged(normalDamage);
+                        context.Caster.RaiseOnHealthChanged(sender, context.Caster.GetHealth()); //show it in UI
+                    }
+                    else //failed parry (may vary from the "else" below)
+                    {
+                        Debug.Log("Parry is NOT successful");
+                        if (context.Target.isDefending)
+                            context.Target.GetDamaged(defensedDamage);
+                        else
+                            context.Target.GetDamaged(normalDamage);
+
+                        context.Target.RaiseOnHealthChanged(sender, context.Target.GetHealth()); //show it in UI
+                    }
+                    ParryManager.Instance.IsParryActive = false;
+                }
+                else
+                {
+                    Debug.Log("NO PARRY");
                     if (context.Target.isDefending)
                         context.Target.GetDamaged(defensedDamage);
                     else
@@ -50,17 +99,6 @@ public class AttackSkill : Skill
 
                     context.Target.RaiseOnHealthChanged(sender, context.Target.GetHealth()); //show it in UI
                 }
-                ParryManager.Instance.IsParryActive = false;
-            }
-            else
-            {
-                Debug.Log("NO PARRY");
-                if (context.Target.isDefending)
-                    context.Target.GetDamaged(defensedDamage);
-                else
-                    context.Target.GetDamaged(normalDamage);
-
-                context.Target.RaiseOnHealthChanged(sender, context.Target.GetHealth()); //show it in UI
             }
 
             Debug.Log("Health after: " + context.Target.GetHealth());

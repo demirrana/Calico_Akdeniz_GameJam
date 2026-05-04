@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<BackgroundType> backgroundTypes;
     private int backgroundIndex = 0;
 
-    [SerializeField] private List<Sprite> enemySprites;
+    [SerializeField] public List<Sprite> enemySprites;
 
     //iki obje tutmak: biri background listesi diğeri de bunların sırasına göre arkaya mı öne mi gideceği (türü)
 
