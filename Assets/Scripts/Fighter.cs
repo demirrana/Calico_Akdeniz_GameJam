@@ -24,6 +24,13 @@ public class Fighter : MonoBehaviour
     private Skill previousSkill;
     private Skill currentSkill;
 
+    public void Reset()
+    {
+        SetInitialSkills();
+        health = maxHealth;
+        isDefending = false;
+    }
+
     protected virtual void Awake()
     {
         fighterAnimator = GetComponent<Animator>();

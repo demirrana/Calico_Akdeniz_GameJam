@@ -21,7 +21,7 @@ public class Enemy : Fighter
         }
         else
         {
-            if (Player.Instance.GetHealth() <= 40)
+            if (Instance.GetHealth() >= 40)
             {
                 chosenSkill = FightManager.Instance.attackSkill;
                 RaiseOnSkillChosen(this, this, Player.Instance, chosenSkill);
@@ -39,11 +39,11 @@ public class Enemy : Fighter
     {
         if (health <= 40)
         {
-            return FightManager.Instance.attackSkill; //change to heal later
+            return FightManager.Instance.healSkill; //change to heal later
         }
         else
         {
-            if (Player.Instance.GetHealth() <= 80)
+            if (health > 40)
             {
                 return FightManager.Instance.attackSkill;
             }
