@@ -314,7 +314,8 @@ public class LegoBuilder : MonoBehaviour
     /// </summary>
     public void ExportAndGoToGame()
     {
+        AudioManager.Instance.StopMusic();
         ExportModel();
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("SampleScene");
     }
 }

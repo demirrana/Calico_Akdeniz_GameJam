@@ -1,9 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    [Header("Flash Efekti")]
+    [Tooltip("Beyaz flash image — Canvas'taki overlay")]
+    public Image flashImage;
+    [Tooltip("Flash'ın peak'e (en parlak) çıkma süresi")]
+    public float flashFadeInDuration = 0.4f;
+    [Tooltip("Peak'te ne kadar bekleyecek")]
+    public float flashHoldDuration = 0.2f;
+
     [Header("Sahne")]
     public string builderSceneName = "LegoBuildScene";
 
@@ -25,10 +34,11 @@ public class MainMenuController : MonoBehaviour
 
     [Header("Geçiş")]
     [Tooltip("Blur netleştikten sonra çalacak ses (AudioManager üzerinden)")]
-    public string transitionSFX1 = "Sound";
-    public string transitionSFX2 = "Sound";
+    public string transitionSFX1 = "BenCocuk";
+    public string transitionSFX2 = "Senindemi";
     [Tooltip("Sesin uzunluğu (saniye) — bittikten sonra sahne geçer")]
-    public float transitionSFXDuration = 2f;
+    public float transitionSFX1Duration = 8f;
+    public float transitionSFX2Duration = 3f;
 
     private bool isPlaying = false;
 
@@ -85,14 +95,40 @@ public class MainMenuController : MonoBehaviour
 
             yield return null;
         }
-        // 4. Sesi çal
+        // 4. İlk ses
         if (!string.IsNullOrEmpty(transitionSFX1) && AudioManager.Instance != null)
             AudioManager.Instance.PlayOneShotSFX(transitionSFX1);
-        // Sesin bitmesini bekle
-        yield return new WaitForSeconds(transitionSFXDuration);
+        yield return new WaitForSeconds(transitionSFX1Duration);
+
+        // 5. İkinci ses
         if (!string.IsNullOrEmpty(transitionSFX2) && AudioManager.Instance != null)
             AudioManager.Instance.PlayOneShotSFX(transitionSFX2);
-        yield return new WaitForSeconds(transitionSFXDuration);
+        yield return new WaitForSeconds(transitionSFX2Duration);
+
+        // 6. Beyaz flash efekti
+        if (flashImage != null)
+        {
+            Color c = flashImage.color;
+            c.a = 0f;
+            flashImage.color = c;
+
+            // Fade in: alpha 0 → 1
+            float elapsed1 = 0f;
+            while (elapsed1 < flashFadeInDuration)
+            {
+                elapsed1 += Time.deltaTime;
+                c.a = Mathf.Clamp01(elapsed1 / flashFadeInDuration);
+                flashImage.color = c;
+                yield return null;
+            }
+            c.a = 1f;
+            flashImage.color = c;
+
+            // Peak'te bekle
+            yield return new WaitForSeconds(flashHoldDuration);
+        }
+
+        SceneManager.LoadScene(builderSceneName);
         // Final değer sabitle
         if (blurMaterial != null)
             blurMaterial.SetFloat("_MixAmount", softMixEnd);
