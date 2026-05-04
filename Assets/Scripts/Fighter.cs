@@ -13,6 +13,9 @@ public class Fighter : MonoBehaviour
     [SerializeField] protected int health = 100;
     private int maxHealth;
 
+    [SerializeField] private Sprite healSprite;
+    [SerializeField] private SpriteRenderer healSpriteRenderer;
+
     //Animation related variables
     protected Animator fighterAnimator;
     protected readonly string AttackTrigger = "Attack";
@@ -36,6 +39,7 @@ public class Fighter : MonoBehaviour
         fighterAnimator = GetComponent<Animator>();
         SetInitialSkills();
         maxHealth = health;
+        healSpriteRenderer.sprite = healSprite;
     }
 
     private void SetInitialSkills()
@@ -74,6 +78,16 @@ public class Fighter : MonoBehaviour
         //Debug.Log("fighter is " + this.name);
         //Debug.Log("9: EndAnimation is called as animation's end event");
         this.OnAnimationEnd?.Invoke(this, EventArgs.Empty); //is triggered for both of them on each time
+    }
+
+    public void EnableHeal()
+    {
+        healSpriteRenderer.enabled = true;
+    }
+
+    public void DisableHeal()
+    {
+        healSpriteRenderer.enabled = false;
     }
     
     public virtual void Fight()
