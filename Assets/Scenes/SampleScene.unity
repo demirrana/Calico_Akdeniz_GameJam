@@ -903,6 +903,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 12c5e0f49f61d204eb70380dabeaef00, type: 3}
   - {fileID: 137515619468158634, guid: 454af319c1ed0554f90338311ff60879, type: 3}
   - {fileID: 21300000, guid: 12c5e0f49f61d204eb70380dabeaef00, type: 3}
+  - {fileID: 21300000, guid: bb9b06d13b219f24294a0c0b04c8ef0e, type: 3}
   backgroundTypes: 010000000000000001000000000000000100000000000000
   enemySprites:
   - {fileID: 21300000, guid: 56342a7e326c9484babdd6b812d4c303, type: 3}

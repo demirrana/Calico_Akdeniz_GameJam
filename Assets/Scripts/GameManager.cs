@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -106,6 +107,14 @@ public class GameManager : MonoBehaviour
         FightManager.Instance.enabled = true;
         FightManager.Instance.Reset();
         backgroundIndex++;
+
+        if (backgroundIndex == allBackgrounds.Count - 1) //show the last scene and finish the game
+        {
+            LoadImage(allBackgrounds[backgroundIndex]);
+            StartCoroutine(WaitForEnter());
+            return;
+        }
+
         LoadImage(allBackgrounds[backgroundIndex]);
         Debug.Log("BACKGROUND NAME: " + allBackgrounds[backgroundIndex].name);
         SendBackgroundToBack();
@@ -120,6 +129,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("After SetActive - Enemy active: " + Enemy.Instance.gameObject.activeSelf);
         Debug.Log("After SetActive - Canvas active: " + canvasObject.activeSelf);
         Debug.Log("=== StartLevel END ===");
+    }
+
+    private IEnumerator WaitForEnter()
+    {
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
     }
 
     private void LoadImage(Sprite imgSprite)

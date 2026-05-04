@@ -39,6 +39,7 @@ public class Enemy : Fighter
 
     public Skill DecideOnAndGetSkill()
     {
+        /*
         if (health <= 40)
         {
             return FightManager.Instance.attackSkill; //change to heal later
@@ -53,7 +54,32 @@ public class Enemy : Fighter
             {
                 return FightManager.Instance.defendSkill;
             }
+        }*/
+        
+        float rand = UnityEngine.Random.value; // 0-1 arası
+
+        if (health <= 30)
+        {
+            // Kritik can: ağırlıklı heal, biraz atak
+            if (rand < 0.55f) return FightManager.Instance.healSkill;
+            if (rand < 0.85f) return FightManager.Instance.attackSkill;
+            return FightManager.Instance.defendSkill;
         }
+        else if (health <= 60)
+        {
+            // Orta can: dengeli
+            if (rand < 0.45f) return FightManager.Instance.attackSkill;
+            if (rand < 0.75f) return FightManager.Instance.healSkill;
+            return FightManager.Instance.defendSkill;
+        }
+        else
+        {
+            // Yüksek can: agresif
+            if (rand < 0.65f) return FightManager.Instance.attackSkill;
+            if (rand < 0.85f) return FightManager.Instance.defendSkill;
+            return FightManager.Instance.healSkill;
+        }
+        
     }
 
     public void ChangeSprite(Sprite sprite)
