@@ -24,8 +24,11 @@ public class MainMenuController : MonoBehaviour
     public float blurFadeDuration = 1.5f;
 
     [Header("Geçiş")]
-    [Tooltip("Tüm animasyonlar bitince sahne geçişine kadar bekleme")]
-    public float postAnimationDelay = 0.5f;
+    [Tooltip("Blur netleştikten sonra çalacak ses (AudioManager üzerinden)")]
+    public string transitionSFX1 = "Sound";
+    public string transitionSFX2 = "Sound";
+    [Tooltip("Sesin uzunluğu (saniye) — bittikten sonra sahne geçer")]
+    public float transitionSFXDuration = 2f;
 
     private bool isPlaying = false;
 
@@ -39,6 +42,7 @@ public class MainMenuController : MonoBehaviour
 
     public void OnPlayClicked()
     {
+        AudioManager.Instance.StopMusic();
         if (isPlaying) return;
         isPlaying = true;
         StartCoroutine(PlaySequence());
@@ -81,13 +85,17 @@ public class MainMenuController : MonoBehaviour
 
             yield return null;
         }
-
+        // 4. Sesi çal
+        if (!string.IsNullOrEmpty(transitionSFX1) && AudioManager.Instance != null)
+            AudioManager.Instance.PlayOneShotSFX(transitionSFX1);
+        // Sesin bitmesini bekle
+        yield return new WaitForSeconds(transitionSFXDuration);
+        if (!string.IsNullOrEmpty(transitionSFX2) && AudioManager.Instance != null)
+            AudioManager.Instance.PlayOneShotSFX(transitionSFX2);
+        yield return new WaitForSeconds(transitionSFXDuration);
         // Final değer sabitle
         if (blurMaterial != null)
             blurMaterial.SetFloat("_MixAmount", softMixEnd);
-
-        // 4. Sahne geçişi öncesi bekleme
-        yield return new WaitForSeconds(postAnimationDelay);
 
         SceneManager.LoadScene(builderSceneName);
     }

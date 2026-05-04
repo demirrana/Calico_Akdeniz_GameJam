@@ -32,6 +32,7 @@ public class PlacementGuide : MonoBehaviour
     // ── Unity Lifecycle ───────────────────────────────────────
     private void Awake()
     {
+        AudioManager.Instance.PlayOneShotSFX("LegosSound");
         // Başlangıçta gizli
         if (ghostRenderer != null)
             ghostRenderer.enabled = false;
