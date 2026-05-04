@@ -82,12 +82,13 @@ public class Fighter : MonoBehaviour
 
     public void EnableHeal()
     {
-        healSpriteRenderer.enabled = true;
+        Debug.Log("EnableHeal");
+        healSpriteRenderer.gameObject.SetActive(true);
     }
 
     public void DisableHeal()
     {
-        healSpriteRenderer.enabled = false;
+        healSpriteRenderer.gameObject.SetActive(false);
     }
     
     public virtual void Fight()
