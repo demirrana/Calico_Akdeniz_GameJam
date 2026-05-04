@@ -47,6 +47,8 @@ public class FightManager : MonoBehaviour
     private Turn previousTurn;
     private Turn currentTurn; //this is changed through other methods
 
+    private bool isLevelChanging = false;
+
     public Turn GetCurrentTurn()
     {
         return currentTurn;
@@ -54,6 +56,7 @@ public class FightManager : MonoBehaviour
 
     public void Reset()
     {
+        isLevelChanging = false;
         previousTurn = Turn.Enemy;
         currentTurn = Turn.Player;
         Player.Instance.Reset();
@@ -167,7 +170,7 @@ public class FightManager : MonoBehaviour
         else //do Enemy's Fight method in here
         {
             fighter.StopAnimatingDefense();
-            
+
             Skill chosenSkill = Enemy.Instance.DecideOnAndGetSkill();
             fighter.OnSkillChosen += ChooseFighterSkill;
             fighter.RaiseOnSkillChosen(this, fighter, targetFighter, chosenSkill);
@@ -181,7 +184,7 @@ public class FightManager : MonoBehaviour
 
         if (currentTurn == Turn.Enemy && fighterArgs.Skill == attackSkill) //parry chance
         {
-            StartCoroutine(ParryManager.Instance.TryParry(GameManager.Instance.GetCurrentLevel(), () => //!!!!!!!!!!!!!!!!!!!!!!!!! level instead of 1
+            StartCoroutine(ParryManager.Instance.TryParry(GameManager.Instance.GetCurrentLevel(), () =>
             {
                 fighterArgs.Skill.Execute(new SkillContext(fighterArgs.Fighter, fighterArgs.TargetFighter, SkillFinished));
             }));
@@ -213,9 +216,12 @@ public class FightManager : MonoBehaviour
 
     private void DetectLevelFinished()
     {
+        if (isLevelChanging)    return;
+
         //Debug.Log("DetectLevelFinished");
         if (Enemy.Instance.GetHealth() <= 0) //player got past this level
         {
+            isLevelChanging = true;
             Debug.Log("Enemy has no health");
             GameManager.Instance.RaiseOnLevelCompleted(this);
             //successful window

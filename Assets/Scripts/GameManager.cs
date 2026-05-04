@@ -68,43 +68,55 @@ public class GameManager : MonoBehaviour
 
     private void CompleteLevel(object sender, EventArgs e)
     {
-        //BringBackgroundToFront();
+        Debug.Log("Complete level " + currentLevel);
         canvasObject.SetActive(false);
         Enemy.Instance.gameObject.SetActive(false);
-        FightManager.Instance.Reset();
+        
+        // Reset() KALDIRILDI — sadece disable et
+        FightManager.Instance.enabled = false;
         
         backgroundIndex += 1;
-
-        //win screen
-
         currentLevel += 1;
 
         LoadImage(allBackgrounds[backgroundIndex]);
 
-        //animations call RaiseOnLevelStarted from Player instance and the last animation doesn't
         switch (currentLevel)
         {
-            case 2:
-                Debug.Log("Animate moving on map to level 2");
-                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToLevel2);
+            case 2: 
+                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToLevel2); 
                 break;
-            case 3:
-                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToLevel3);
+            case 3: 
+                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToLevel3); 
                 break;
-            case 4:
-                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToFinish);
+            case 4: 
+                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToFinish); 
                 break;
         }
     }
 
     private void StartLevel(object sender, EventArgs e) //call when cutscene is completed
     {
+        Debug.Log("=== StartLevel BEGIN ===");
+        Debug.Log("currentLevel: " + currentLevel);
+        Debug.Log("backgroundIndex: " + backgroundIndex);
+        Debug.Log("enemySprites count: " + enemySprites.Count);
+        Debug.Log("allBackgrounds count: " + allBackgrounds.Count);
+
+        FightManager.Instance.enabled = true;
+        FightManager.Instance.Reset();
         backgroundIndex++;
         LoadImage(allBackgrounds[backgroundIndex]);
+        Debug.Log("BACKGROUND NAME: " + allBackgrounds[backgroundIndex].name);
         SendBackgroundToBack();
         ChangeEnemy(enemySprites[currentLevel - 1]);
+        
+        Debug.Log("Before SetActive - Enemy active: " + Enemy.Instance.gameObject.activeSelf);
+        Debug.Log("Before SetActive - Canvas active: " + canvasObject.activeSelf);
         Enemy.Instance.gameObject.SetActive(true);
         canvasObject.SetActive(true);
+        Debug.Log("After SetActive - Enemy active: " + Enemy.Instance.gameObject.activeSelf);
+        Debug.Log("After SetActive - Canvas active: " + canvasObject.activeSelf);
+        Debug.Log("=== StartLevel END ===");
     }
 
     private void LoadImage(Sprite imgSprite)
@@ -124,6 +136,6 @@ public class GameManager : MonoBehaviour
 
     private void SendBackgroundToBack()
     {
-        backGround.sortingOrder = -1;
+        backGround.sortingOrder = -5;
     }
 }

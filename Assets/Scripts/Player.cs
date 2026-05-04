@@ -16,8 +16,10 @@ public class Player : Fighter
 
     public void ReachToNextLevel()
     {
-        Debug.Log("ReachToNextLevel is called by Player");
+        Debug.Log("=== ReachToNextLevel CALLED ===");
+        Debug.Log("Is this being called? Level: " + GameManager.Instance.GetCurrentLevel());
         GameManager.Instance.RaiseOnLevelStarted(this);
+        Debug.Log("=== RaiseOnLevelStarted returned ===");
     }
 
     protected override void Awake()
