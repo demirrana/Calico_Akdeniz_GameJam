@@ -76,14 +76,30 @@ public class LegoBuilder : MonoBehaviour
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
     }
+    public string introSFX = "EvetVardi";
+    public float introSFXDuration = 3f;
+    public string backgroundMusic = "LegoBuilding";
 
     private void Start()
     {
-        AudioManager.Instance.PlayMusic("LegoBuilding");
         if (spawnOnStart)
             SpawnAllPieces();
+
+        StartCoroutine(IntroSequence());
     }
 
+    private IEnumerator IntroSequence()
+    {
+        if (AudioManager.Instance == null) yield break;
+
+        if (!string.IsNullOrEmpty(introSFX))
+            AudioManager.Instance.PlayOneShotSFX(introSFX);
+
+        yield return new WaitForSeconds(introSFXDuration);
+
+        if (!string.IsNullOrEmpty(backgroundMusic))
+            AudioManager.Instance.PlayMusic(backgroundMusic);
+    }
     // ── Parça Dağıtımı ────────────────────────────────────────
 
     /// <summary>
@@ -226,7 +242,7 @@ public class LegoBuilder : MonoBehaviour
     /// </summary>
     public void ExportModel()
     {
-        SpriteExporter exporter = FindObjectOfType<SpriteExporter>(true);
+        SpriteExporter exporter = FindAnyObjectByType<SpriteExporter>();
         if (exporter == null)
         {
             Debug.LogWarning("LegoBuilder: SpriteExporter bulunamadı!");

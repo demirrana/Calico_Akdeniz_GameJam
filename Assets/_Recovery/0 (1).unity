@@ -140,7 +140,7 @@ MonoBehaviour:
     volume: 0.55
   - name: LegoBuilding
     clip: {fileID: 8300000, guid: cf14164483683f54caf570a651992647, type: 3}
-    volume: 0.11
+    volume: 0.24
   - name: Fighting
     clip: {fileID: 8300000, guid: cf14164483683f54caf570a651992647, type: 3}
     volume: 0.23
@@ -210,9 +210,6 @@ MonoBehaviour:
     volume: 1
   - name: EvetVardi
     clip: {fileID: 8300000, guid: 162badd678678fa4a9631898a4614b90, type: 3}
-    volume: 1
-  - name: Parry
-    clip: {fileID: 8300000, guid: 00cd490f1db8a314e82e69616a1338b6, type: 3}
     volume: 1
   loopedSfxSounds:
   - name: 
