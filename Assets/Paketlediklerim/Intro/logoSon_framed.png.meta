@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c6474a8f0c039e46b498208c48936ea
+guid: f663991c9fe30e74ebe2c42557c8a008
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7868195389839195132
-    second: LegoModel_20260503_221154_0
+      213: -143553379399166696
+    second: logoSon_framed_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LegoModel_20260503_221154_0
+      name: logoSon_framed_0
       rect:
         serializedVersion: 2
-        x: 133
-        y: 68
-        width: 365
-        height: 345
+        x: 79
+        y: 78
+        width: 1643
+        height: 1643
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cfb3bb20502713d60800000000000000
-      internalID: 7868195389839195132
+      spriteID: 8151b9646fef10ef0800000000000000
+      internalID: -143553379399166696
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LegoModel_20260503_221154_0: 7868195389839195132
+      logoSon_framed_0: -143553379399166696
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

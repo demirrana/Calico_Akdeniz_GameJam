@@ -561,8 +561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteExporter
   exportCamera: {fileID: 908551505}
-  textureWidth: 512
-  textureHeight: 512
+  textureWidth: 720
+  textureHeight: 720
   outputPath: ExportedSprites
   fileName: LegoModel
   transparentBackground: 1
@@ -645,7 +645,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

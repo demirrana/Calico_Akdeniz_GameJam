@@ -71,6 +71,7 @@ public class LegoBuilder : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.PlayMusic("LegoBuilding");
         if (spawnOnStart)
             SpawnAllPieces();
     }

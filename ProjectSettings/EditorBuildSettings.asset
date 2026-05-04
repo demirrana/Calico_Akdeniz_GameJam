@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene.unity
     guid: 95e5619c8a100a34b98d89808438cfef
   - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: e67aac865b934b94a9cd8e246498744d
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 94aadb42c8797564d960e2bc9a7662b1
+  - enabled: 1
     path: Assets/Scenes/LegoBuildScene.unity
     guid: a5b8001be256fa6439ec25c61ed1a25e
   m_configObjects:
