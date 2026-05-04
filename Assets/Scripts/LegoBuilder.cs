@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 // ============================================================
 // LegoBuilder.cs
@@ -18,6 +19,13 @@ using UnityEngine.SceneManagement;
 
 public class LegoBuilder : MonoBehaviour
 {
+    [Header("Export Animasyonu")]
+    [Tooltip("Export butonunun Animator'ı")]
+    public Animator exportButtonAnimator;
+    [Tooltip("Animator trigger ismi")]
+    public string exportTriggerName = "LegoGrib";
+    [Tooltip("Animasyon süresi (saniye)")]
+    public float exportAnimationDuration = 1f;
     // ── Singleton ─────────────────────────────────────────────
     public static LegoBuilder Instance { get; private set; }
 
@@ -314,7 +322,25 @@ public class LegoBuilder : MonoBehaviour
     /// </summary>
     public void ExportAndGoToGame()
     {
-        AudioManager.Instance.StopMusic();
+        StartCoroutine(ExportSequence());
+    }
+
+        private IEnumerator ExportSequence()
+    {
+ 
+
+        // 2. Animasyonu tetikle
+        if (exportButtonAnimator != null && !string.IsNullOrEmpty(exportTriggerName))
+            exportButtonAnimator.SetTrigger(exportTriggerName);
+
+        // 3. Animasyon bitsin
+        yield return new WaitForSeconds(exportAnimationDuration);
+
+       // 1. Müziği durdur
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.StopMusic();
+            
+        // 4. Export ve sahne geçişi
         ExportModel();
         SceneManager.LoadScene("SampleScene");
     }
