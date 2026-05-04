@@ -338,6 +338,7 @@ public class LegoBuilder : MonoBehaviour
     /// </summary>
     public void ExportAndGoToGame()
     {
+        AudioManager.Instance.PlayOneShotSFX("BenYaptim");
         StartCoroutine(ExportSequence());
     }
 

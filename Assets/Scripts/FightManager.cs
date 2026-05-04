@@ -221,6 +221,7 @@ public class FightManager : MonoBehaviour
         //Debug.Log("DetectLevelFinished");
         if (Enemy.Instance.GetHealth() <= 0) //player got past this level
         {
+            AudioManager.Instance.PlayOneShotSFX("IWin");
             isLevelChanging = true;
             Debug.Log("Enemy has no health");
             GameManager.Instance.RaiseOnLevelCompleted(this);

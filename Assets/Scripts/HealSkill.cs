@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Objects/HealSkill")]
 public class HealSkill : Skill
 {
+    int ranSayi;
     public override void Execute(SkillContext context)
     {
         Debug.Log("7: HealSkill Execute");
@@ -15,6 +16,11 @@ public class HealSkill : Skill
         {
             Fighter animatorOwner = sender as Fighter;
             if (context.Caster != animatorOwner)    return;
+            ranSayi = UnityEngine.Random.Range(0, 5);
+            if(ranSayi == 0)
+                AudioManager.Instance.PlayOneShotSFX("CanAzalmadiki");
+            else if(ranSayi == 1)
+                AudioManager.Instance.PlayOneShotSFX("CanBuyusu");
 
             context.Caster.OnAnimationEnd -= OnAnimationComplete;
             context.Caster.Heal(15); //for now, heal by 15 health

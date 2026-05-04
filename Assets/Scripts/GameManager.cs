@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     private void CompleteLevel(object sender, EventArgs e)
     {
+        AudioManager.Instance.StopMusic();
         Debug.Log("Complete level " + currentLevel);
         canvasObject.SetActive(false);
         Enemy.Instance.gameObject.SetActive(false);
@@ -104,12 +105,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("enemySprites count: " + enemySprites.Count);
         Debug.Log("allBackgrounds count: " + allBackgrounds.Count);
 
+        StartCoroutine(StartLevelMusic());
+        // if(AudioManager.Instance != null)
+        //     AudioManager.Instance.StopMusic();
+        // AudioManager.Instance.PlayMusic("Fighting");
         FightManager.Instance.enabled = true;
         FightManager.Instance.Reset();
         backgroundIndex++;
 
         if (backgroundIndex == allBackgrounds.Count - 1) //show the last scene and finish the game
         {
+            
             LoadImage(allBackgrounds[backgroundIndex]);
             Player.Instance.transform.gameObject.SetActive(false);
             StartCoroutine(WaitForEnter());
@@ -132,8 +138,23 @@ public class GameManager : MonoBehaviour
         Debug.Log("=== StartLevel END ===");
     }
 
+        private IEnumerator StartLevelMusic()
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.StopMusic();
+
+        // Bir frame bekle ki StopMusic işlensin
+        yield return null;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayMusic("Fighting");
+    }
+
     private IEnumerator WaitForEnter()
     {
+        AudioManager.Instance.PlayOneShotSFX("Oley");
+        yield return new WaitForSeconds(3f);
+        AudioManager.Instance.PlayOneShotSFX("HeheEvet");
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
     }
 
