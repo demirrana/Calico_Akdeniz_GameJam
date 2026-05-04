@@ -17,6 +17,7 @@ public class HealSkill : Skill
 
             context.Caster.OnAnimationEnd -= OnAnimationComplete;
             context.Caster.Heal(15); //for now, heal by 15 health
+            context.Caster.RaiseOnHealthChanged(this, context.Caster.GetHealth());
             context.Caster.RaiseOnSkillCompleted(this, context.Caster, context.Target, this);
         }
     }

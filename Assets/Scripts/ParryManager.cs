@@ -7,16 +7,19 @@ public class ParryManager : MonoBehaviour
 
     public bool IsParryActive = false;
     [SerializeField] private GameObject parryVisual;
+    
+    private Vector3 defaultParryVisualScale;
 
     private bool isParrySuccessful;
 
     private float reactionTime = 1f;
-    private float level2MinRythmPeriod = 1f; //change them if periods are long or short
-    private float level2MaxRythmPeriod = 1.3f;
+    private float level2MinRythmPeriod = 0.2f; //change them if periods are long or short
+    private float level2MaxRythmPeriod = 0.7f;
 
     private void Awake()
     {
         SetSingleton();
+        defaultParryVisualScale = parryVisual.transform.localScale;
     }
 
     private void SetSingleton()
@@ -41,25 +44,23 @@ public class ParryManager : MonoBehaviour
 
         IsParryActive = true;
         bool success = false;
-        Vector3 originalScale = parryVisual.transform.localScale;
         SpriteRenderer spriteComp = parryVisual.GetComponent<SpriteRenderer>();
 
         //each level has its own method
         if (level == 1)
         {
-            yield return StartCoroutine(Level1HoldRoutine(originalScale, spriteComp, (result) => success = result));
+            yield return StartCoroutine(Level1HoldRoutine(defaultParryVisualScale, spriteComp, (result) => success = result));
         }
         else if (level == 2)
         {
-            yield return StartCoroutine(Level2RhythmicRoutine(originalScale, spriteComp, (result) => success = result));
+            yield return StartCoroutine(Level2RhythmicRoutine(defaultParryVisualScale, spriteComp, (result) => success = result));
         }
         else // Level 3 veya default
         {
-            yield return StartCoroutine(Level3ClassicRoutine(originalScale, spriteComp, (result) => success = result));
+            yield return StartCoroutine(Level3ClassicRoutine(defaultParryVisualScale, spriteComp, (result) => success = result));
         }
 
         parryVisual.SetActive(false);
-        IsParryActive = false;
         isParrySuccessful = success;
 
         Debug.Log(success ? "PARRY BAŞARILI!" : "PARRY KAÇIRILDI!");
@@ -69,6 +70,9 @@ public class ParryManager : MonoBehaviour
     private IEnumerator Level1HoldRoutine(Vector3 scale, SpriteRenderer sprite, System.Action<bool> callback)
     {
         parryVisual.SetActive(true);
+
+        parryVisual.transform.localScale = scale; //set visual to its original scale at first
+
         float timer = reactionTime;
         bool hasPressed = false;
 

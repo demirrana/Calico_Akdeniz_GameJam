@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,7 +9,23 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnLevelCompleted; //shows cutscene between
     public event EventHandler OnLevelStarted; //switches to the level and fight
 
+    public enum BackgroundType
+    {
+        Cutscene,
+        Playscene
+    }
+
     [SerializeField] SpriteRenderer backGround;
+
+    [SerializeField] private GameObject canvasObject;
+
+    [SerializeField] private List<Sprite> allBackgrounds;
+    [SerializeField] private List<BackgroundType> backgroundTypes;
+    private int backgroundIndex = 0;
+
+    [SerializeField] private List<Sprite> enemySprites;
+
+    //iki obje tutmak: biri background listesi diğeri de bunların sırasına göre arkaya mı öne mi gideceği (türü)
 
     private int currentLevel = 1;
 
@@ -22,7 +39,7 @@ public class GameManager : MonoBehaviour
         OnLevelCompleted?.Invoke(sender, EventArgs.Empty);
     }
 
-    public void RaiseOnLevelStarted(object sender)
+    public void RaiseOnLevelStarted(object sender) //end of animation will call this
     {
         OnLevelStarted?.Invoke(sender, EventArgs.Empty);
     }
@@ -45,31 +62,68 @@ public class GameManager : MonoBehaviour
     {
         OnLevelCompleted += CompleteLevel;
         OnLevelStarted += StartLevel;
+        LoadImage(allBackgrounds[backgroundIndex]);
+        SendBackgroundToBack();
     }
 
     private void CompleteLevel(object sender, EventArgs e)
     {
+        //BringBackgroundToFront();
+        canvasObject.SetActive(false);
+        Enemy.Instance.gameObject.SetActive(false);
         FightManager.Instance.Reset();
+        
+        backgroundIndex += 1;
 
-        //LoadImage
-
-        if (currentLevel == 3) //finish game by showing last cutscene
-        {
-            
-        }
-
-        //load cutscene
+        //win screen
 
         currentLevel += 1;
+
+        LoadImage(allBackgrounds[backgroundIndex]);
+
+        //animations call RaiseOnLevelStarted from Player instance and the last animation doesn't
+        switch (currentLevel)
+        {
+            case 2:
+                Debug.Log("Animate moving on map to level 2");
+                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToLevel2);
+                break;
+            case 3:
+                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToLevel3);
+                break;
+            case 4:
+                Player.Instance.AnimateMovingOnMap(Player.Instance.moveToFinish);
+                break;
+        }
     }
 
     private void StartLevel(object sender, EventArgs e) //call when cutscene is completed
     {
-        
+        backgroundIndex++;
+        LoadImage(allBackgrounds[backgroundIndex]);
+        SendBackgroundToBack();
+        ChangeEnemy(enemySprites[currentLevel - 1]);
+        Enemy.Instance.gameObject.SetActive(true);
+        canvasObject.SetActive(true);
     }
 
     private void LoadImage(Sprite imgSprite)
     {
         backGround.sprite = imgSprite;
+    }
+
+    private void ChangeEnemy(Sprite newEnemySprite)
+    {
+        Enemy.Instance.ChangeSprite(newEnemySprite);
+    }
+
+    private void BringBackgroundToFront()
+    {
+        backGround.sortingOrder = 100;
+    }
+
+    private void SendBackgroundToBack()
+    {
+        backGround.sortingOrder = -1;
     }
 }

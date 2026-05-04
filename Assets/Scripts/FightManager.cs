@@ -54,10 +54,12 @@ public class FightManager : MonoBehaviour
 
     public void Reset()
     {
-        previousTurn = Turn.Player;
         previousTurn = Turn.Enemy;
+        currentTurn = Turn.Player;
         Player.Instance.Reset();
         Enemy.Instance.Reset();
+        Player.Instance.RaiseOnHealthChanged(this, Player.Instance.GetMaxHealth()); //set UIs to max health
+        Enemy.Instance.RaiseOnHealthChanged(this, Enemy.Instance.GetMaxHealth());
     }
 
     private void Awake()
@@ -204,13 +206,16 @@ public class FightManager : MonoBehaviour
 
     private void DetectLevelFinished()
     {
+        //Debug.Log("DetectLevelFinished");
         if (Enemy.Instance.GetHealth() <= 0) //player got past this level
         {
+            Debug.Log("Enemy has no health");
             GameManager.Instance.RaiseOnLevelCompleted(this);
             //successful window
         }
         else if (Player.Instance.GetHealth() <= 0) //player has to go through the same level
         {
+            Debug.Log("Player has no health");
             //fail window
         }
     }
@@ -218,6 +223,7 @@ public class FightManager : MonoBehaviour
     //Triggers event OnTurnChanged when isPlayersTurn bool is changed
     private void DetectTurnChange()
     {
+        //Debug.Log("DetectTurnChange");
         if (previousTurn != currentTurn)
         {
             Debug.Log("2: DetectTurnChange turn changed");

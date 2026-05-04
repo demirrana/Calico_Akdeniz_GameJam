@@ -4,6 +4,8 @@ public class Enemy : Fighter
 {
     public static Enemy Instance { get; private set; }
 
+    [SerializeField] private SpriteRenderer enemySpriteRenderer;
+
     protected override void Awake()
     {
         base.Awake();
@@ -39,7 +41,7 @@ public class Enemy : Fighter
     {
         if (health <= 40)
         {
-            return FightManager.Instance.healSkill; //change to heal later
+            return FightManager.Instance.attackSkill; //change to heal later
         }
         else
         {
@@ -52,6 +54,11 @@ public class Enemy : Fighter
                 return FightManager.Instance.defendSkill;
             }
         }
+    }
+
+    public void ChangeSprite(Sprite sprite)
+    {
+        enemySpriteRenderer.sprite = sprite;
     }
 
     private void SetSingleton()

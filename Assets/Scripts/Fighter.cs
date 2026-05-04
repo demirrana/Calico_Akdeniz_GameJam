@@ -14,7 +14,7 @@ public class Fighter : MonoBehaviour
     private int maxHealth;
 
     //Animation related variables
-    private Animator fighterAnimator;
+    protected Animator fighterAnimator;
     protected readonly string AttackTrigger = "Attack";
     protected readonly string IsDefending = "IsDefending";
     protected readonly string HealTrigger = "Heal";
@@ -97,6 +97,7 @@ public class Fighter : MonoBehaviour
 
     public void RaiseOnHealthChanged(object sender, int newHealth)
     {
+        Debug.Log("RaiseOnHealthChanged by sender " + sender.ToString());
         OnHealthChanged?.Invoke(sender, newHealth);
     }
 

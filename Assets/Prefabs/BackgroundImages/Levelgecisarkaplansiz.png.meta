@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: 0e9d92f6578d5d0408d67679a24bfbbe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3707079291894404938
+    second: Levelgecisarkaplansiz_0
+  - first:
+      213: -6314861185721108630
+    second: Levelgecisarkaplansiz_1
+  - first:
+      213: -8000892233947065748
+    second: Levelgecisarkaplansiz_2
+  - first:
+      213: -1435147073223731626
+    second: Levelgecisarkaplansiz_3
+  - first:
+      213: 8387591926280624627
+    second: Levelgecisarkaplansiz_4
+  - first:
+      213: 135008893575672024
+    second: Levelgecisarkaplansiz_5
+  - first:
+      213: -5632998167234312353
+    second: Levelgecisarkaplansiz_6
+  - first:
+      213: 836547673018638860
+    second: Levelgecisarkaplansiz_7
+  - first:
+      213: 590681437928570940
+    second: Levelgecisarkaplansiz_8
+  - first:
+      213: 5720089445674997912
+    second: Levelgecisarkaplansiz_9
+  - first:
+      213: -4932238669401707961
+    second: Levelgecisarkaplansiz_10
+  - first:
+      213: 3975471406447119711
+    second: Levelgecisarkaplansiz_11
+  - first:
+      213: -5041907293903504711
+    second: Levelgecisarkaplansiz_12
+  - first:
+      213: 2016569534665965840
+    second: Levelgecisarkaplansiz_13
+  - first:
+      213: 2614402567061591116
+    second: Levelgecisarkaplansiz_14
+  - first:
+      213: -415666767622982109
+    second: Levelgecisarkaplansiz_15
+  - first:
+      213: 7158259812385760358
+    second: Levelgecisarkaplansiz_16
+  - first:
+      213: 1283306849029748345
+    second: Levelgecisarkaplansiz_17
+  - first:
+      213: 3439770746575366071
+    second: Levelgecisarkaplansiz_18
+  - first:
+      213: 244817139401892968
+    second: Levelgecisarkaplansiz_19
+  - first:
+      213: -8503920558775796475
+    second: Levelgecisarkaplansiz_20
+  - first:
+      213: -1003601064266567843
+    second: Levelgecisarkaplansiz_21
+  - first:
+      213: -3549613614246784983
+    second: Levelgecisarkaplansiz_22
+  - first:
+      213: -7745784752260520581
+    second: Levelgecisarkaplansiz_23
+  - first:
+      213: -126586420985930319
+    second: Levelgecisarkaplansiz_24
+  - first:
+      213: 3313628224147291600
+    second: Levelgecisarkaplansiz_25
+  - first:
+      213: 4126512436536908821
+    second: Levelgecisarkaplansiz_26
+  - first:
+      213: 2443057494791580695
+    second: Levelgecisarkaplansiz_27
+  - first:
+      213: -2880571060467687277
+    second: Levelgecisarkaplansiz_28
+  - first:
+      213: 4921566168315759498
+    second: Levelgecisarkaplansiz_29
+  - first:
+      213: 6732231285018171907
+    second: Levelgecisarkaplansiz_30
+  - first:
+      213: 5011779086310989018
+    second: Levelgecisarkaplansiz_31
+  - first:
+      213: -924378706994052750
+    second: Levelgecisarkaplansiz_32
+  - first:
+      213: 5541674311023889543
+    second: Levelgecisarkaplansiz_33
+  - first:
+      213: -9112145204664114605
+    second: Levelgecisarkaplansiz_34
+  - first:
+      213: -4898797475967991002
+    second: Levelgecisarkaplansiz_35
+  - first:
+      213: 7031675842510886167
+    second: Levelgecisarkaplansiz_36
+  - first:
+      213: -4394536873535729294
+    second: Levelgecisarkaplansiz_37
+  - first:
+      213: 3213056057487682707
+    second: Levelgecisarkaplansiz_38
+  - first:
+      213: 3580969352128791200
+    second: Levelgecisarkaplansiz_39
+  - first:
+      213: -2847224777892516172
+    second: Levelgecisarkaplansiz_40
+  - first:
+      213: -2476111879775739871
+    second: Levelgecisarkaplansiz_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_0
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 2381
+        width: 1786
+        height: 2112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47929b99f0327330800000000000000
+      internalID: 3707079291894404938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_1
+      rect:
+        serializedVersion: 2
+        x: 5951
+        y: 2586
+        width: 1870
+        height: 2093
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a67f03b853b1d58a0800000000000000
+      internalID: -6314861185721108630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_2
+      rect:
+        serializedVersion: 2
+        x: 7864
+        y: 4261
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c62576d57ee17f090800000000000000
+      internalID: -8000892233947065748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_3
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 3401
+        width: 425
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 656de043755551ce0800000000000000
+      internalID: -1435147073223731626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_4
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 3670
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f914e6ea66b66470800000000000000
+      internalID: 8387591926280624627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_5
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 3551
+        width: 381
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d0b8179fd5afd100800000000000000
+      internalID: 135008893575672024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_6
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 3551
+        width: 27
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f578295030293d1b0800000000000000
+      internalID: -5632998167234312353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_7
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 2760
+        width: 290
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c02a4f72da30c9b00800000000000000
+      internalID: 836547673018638860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_8
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 3278
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c30462363a5823800800000000000000
+      internalID: 590681437928570940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_9
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 3284
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8985be46b07d16f40800000000000000
+      internalID: 5720089445674997912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_10
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 2755
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74aadd2ff0b2d8bb0800000000000000
+      internalID: -4932238669401707961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_11
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 2753
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5dc0046e26bb2730800000000000000
+      internalID: 3975471406447119711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_12
+      rect:
+        serializedVersion: 2
+        x: 5676
+        y: 2181
+        width: 456
+        height: 446
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ba3e64870c870ab0800000000000000
+      internalID: -5041907293903504711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_13
+      rect:
+        serializedVersion: 2
+        x: 6205
+        y: 2586
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 011c3aabe4b4cfb10800000000000000
+      internalID: 2016569534665965840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_14
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 1942
+        width: 290
+        height: 626
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4453957849384420800000000000000
+      internalID: 2614402567061591116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_15
+      rect:
+        serializedVersion: 2
+        x: 6131
+        y: 2471
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 326b5e2f6414b3af0800000000000000
+      internalID: -415666767622982109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_16
+      rect:
+        serializedVersion: 2
+        x: 6134
+        y: 2462
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 664253f8f5f375360800000000000000
+      internalID: 7158259812385760358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_17
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 2416
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9767e3aa7c83fc110800000000000000
+      internalID: 1283306849029748345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_18
+      rect:
+        serializedVersion: 2
+        x: 2827
+        y: 2371
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b7a762f4458cbf20800000000000000
+      internalID: 3439770746575366071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_19
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 2203
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8642af424e3c56300800000000000000
+      internalID: 244817139401892968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_20
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 1916
+        width: 358
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50df608be410cf980800000000000000
+      internalID: -8503920558775796475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_21
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 2206
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5fef2c362e7212f0800000000000000
+      internalID: -1003601064266567843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_22
+      rect:
+        serializedVersion: 2
+        x: 5684
+        y: 2177
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9201ee8793d3dbec0800000000000000
+      internalID: -3549613614246784983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_23
+      rect:
+        serializedVersion: 2
+        x: 5836
+        y: 2180
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b75efd68ec1718490800000000000000
+      internalID: -7745784752260520581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_24
+      rect:
+        serializedVersion: 2
+        x: 5688
+        y: 2172
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bddebf12564e3ef0800000000000000
+      internalID: -126586420985930319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_25
+      rect:
+        serializedVersion: 2
+        x: 3645
+        y: 221
+        width: 1925
+        height: 1946
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ddf102405f5cfd20800000000000000
+      internalID: 3313628224147291600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_26
+      rect:
+        serializedVersion: 2
+        x: 5649
+        y: 2155
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c9305a231544930800000000000000
+      internalID: 4126512436536908821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_27
+      rect:
+        serializedVersion: 2
+        x: 5664
+        y: 2160
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71c68eef8db77e120800000000000000
+      internalID: 2443057494791580695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_28
+      rect:
+        serializedVersion: 2
+        x: 5715
+        y: 2158
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 390ad86e1e72608d0800000000000000
+      internalID: -2880571060467687277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_29
+      rect:
+        serializedVersion: 2
+        x: 5719
+        y: 2152
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8b8a01ca5aec4440800000000000000
+      internalID: 4921566168315759498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_30
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1943
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30a97415fa0bd6d50800000000000000
+      internalID: 6732231285018171907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_31
+      rect:
+        serializedVersion: 2
+        x: 5426
+        y: 1733
+        width: 417
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adc5c44868a6d8540800000000000000
+      internalID: 5011779086310989018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_32
+      rect:
+        serializedVersion: 2
+        x: 5840
+        y: 1946
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2714faba672fb23f0800000000000000
+      internalID: -924378706994052750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_33
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 1937
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78c8c71cc6bf7ec40800000000000000
+      internalID: 5541674311023889543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_34
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 1930
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 352673ee6382b8180800000000000000
+      internalID: -9112145204664114605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_35
+      rect:
+        serializedVersion: 2
+        x: 5840
+        y: 1928
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 623095a86a9f30cb0800000000000000
+      internalID: -4898797475967991002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_36
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 221
+        width: 1493
+        height: 1607
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7159e806ce7859160800000000000000
+      internalID: 7031675842510886167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_37
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 1809
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2711c8c2ff77303c0800000000000000
+      internalID: -4394536873535729294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_38
+      rect:
+        serializedVersion: 2
+        x: 2842
+        y: 1367
+        width: 356
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c68f5f571179c20800000000000000
+      internalID: 3213056057487682707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_39
+      rect:
+        serializedVersion: 2
+        x: 3127
+        y: 890
+        width: 464
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a2823927a822b130800000000000000
+      internalID: 3580969352128791200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_40
+      rect:
+        serializedVersion: 2
+        x: 3192
+        y: 1336
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bea6065620ac78d0800000000000000
+      internalID: -2847224777892516172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levelgecisarkaplansiz_41
+      rect:
+        serializedVersion: 2
+        x: 3215
+        y: 1338
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 120a7d54d5513add0800000000000000
+      internalID: -2476111879775739871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Levelgecisarkaplansiz_0: 3707079291894404938
+      Levelgecisarkaplansiz_1: -6314861185721108630
+      Levelgecisarkaplansiz_10: -4932238669401707961
+      Levelgecisarkaplansiz_11: 3975471406447119711
+      Levelgecisarkaplansiz_12: -5041907293903504711
+      Levelgecisarkaplansiz_13: 2016569534665965840
+      Levelgecisarkaplansiz_14: 2614402567061591116
+      Levelgecisarkaplansiz_15: -415666767622982109
+      Levelgecisarkaplansiz_16: 7158259812385760358
+      Levelgecisarkaplansiz_17: 1283306849029748345
+      Levelgecisarkaplansiz_18: 3439770746575366071
+      Levelgecisarkaplansiz_19: 244817139401892968
+      Levelgecisarkaplansiz_2: -8000892233947065748
+      Levelgecisarkaplansiz_20: -8503920558775796475
+      Levelgecisarkaplansiz_21: -1003601064266567843
+      Levelgecisarkaplansiz_22: -3549613614246784983
+      Levelgecisarkaplansiz_23: -7745784752260520581
+      Levelgecisarkaplansiz_24: -126586420985930319
+      Levelgecisarkaplansiz_25: 3313628224147291600
+      Levelgecisarkaplansiz_26: 4126512436536908821
+      Levelgecisarkaplansiz_27: 2443057494791580695
+      Levelgecisarkaplansiz_28: -2880571060467687277
+      Levelgecisarkaplansiz_29: 4921566168315759498
+      Levelgecisarkaplansiz_3: -1435147073223731626
+      Levelgecisarkaplansiz_30: 6732231285018171907
+      Levelgecisarkaplansiz_31: 5011779086310989018
+      Levelgecisarkaplansiz_32: -924378706994052750
+      Levelgecisarkaplansiz_33: 5541674311023889543
+      Levelgecisarkaplansiz_34: -9112145204664114605
+      Levelgecisarkaplansiz_35: -4898797475967991002
+      Levelgecisarkaplansiz_36: 7031675842510886167
+      Levelgecisarkaplansiz_37: -4394536873535729294
+      Levelgecisarkaplansiz_38: 3213056057487682707
+      Levelgecisarkaplansiz_39: 3580969352128791200
+      Levelgecisarkaplansiz_4: 8387591926280624627
+      Levelgecisarkaplansiz_40: -2847224777892516172
+      Levelgecisarkaplansiz_41: -2476111879775739871
+      Levelgecisarkaplansiz_5: 135008893575672024
+      Levelgecisarkaplansiz_6: -5632998167234312353
+      Levelgecisarkaplansiz_7: 836547673018638860
+      Levelgecisarkaplansiz_8: 590681437928570940
+      Levelgecisarkaplansiz_9: 5720089445674997912
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

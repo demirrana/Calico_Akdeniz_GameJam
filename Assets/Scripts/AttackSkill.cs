@@ -28,7 +28,6 @@ public class AttackSkill : Skill
                 {
                     Debug.Log("Parry is successful!");
                     context.Caster.GetDamaged(normalDamage);
-                    ParryManager.Instance.IsParryActive = false;
                     context.Caster.RaiseOnHealthChanged(sender, context.Caster.GetHealth()); //show it in UI
                 }
                 else //failed parry (may vary from the "else" below)
@@ -41,9 +40,11 @@ public class AttackSkill : Skill
                     
                     context.Target.RaiseOnHealthChanged(sender, context.Target.GetHealth()); //show it in UI
                 }
+                ParryManager.Instance.IsParryActive = false;
             }
             else
             {
+                Debug.Log("NO PARRY");
                 if (context.Target.isDefending)
                     context.Target.GetDamaged(defensedDamage);
                 else
