@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         if (backgroundIndex == allBackgrounds.Count - 1) //show the last scene and finish the game
         {
             LoadImage(allBackgrounds[backgroundIndex]);
+            Player.Instance.transform.gameObject.SetActive(false);
             StartCoroutine(WaitForEnter());
             return;
         }
