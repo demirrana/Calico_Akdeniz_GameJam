@@ -172,6 +172,8 @@ MonoBehaviour:
   moveToLevel2: MoveToLevel2
   moveToLevel3: MoveToLevel3
   moveToFinish: MoveToFinish
+  hand1: {fileID: 692417066}
+  hand2: {fileID: 1645550115}
 --- !u!95 &428483536
 Animator:
   serializedVersion: 7

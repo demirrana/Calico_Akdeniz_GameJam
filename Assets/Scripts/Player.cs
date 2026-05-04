@@ -9,6 +9,9 @@ public class Player : Fighter
     public string moveToLevel3 = "MoveToLevel3";
     public string moveToFinish = "MoveToFinish";
 
+    [SerializeField] private GameObject hand1;
+    [SerializeField] private GameObject hand2;
+
     public void AnimateMovingOnMap(string triggerStr)
     {
         fighterAnimator.SetTrigger(triggerStr);
@@ -16,10 +19,19 @@ public class Player : Fighter
 
     public void ReachToNextLevel()
     {
-        Debug.Log("=== ReachToNextLevel CALLED ===");
-        Debug.Log("Is this being called? Level: " + GameManager.Instance.GetCurrentLevel());
         GameManager.Instance.RaiseOnLevelStarted(this);
-        Debug.Log("=== RaiseOnLevelStarted returned ===");
+    }
+
+    public void SetHandVisible()
+    {
+        hand1.SetActive(true);
+        hand2.SetActive(true);
+    }
+
+    public void SetHandInvisible()
+    {
+        hand1.SetActive(false);
+        hand2.SetActive(false);
     }
 
     protected override void Awake()

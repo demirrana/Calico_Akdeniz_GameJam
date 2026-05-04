@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
         backgroundIndex += 1;
         currentLevel += 1;
 
+        Player.Instance.SetHandInvisible();
         LoadImage(allBackgrounds[backgroundIndex]);
 
         switch (currentLevel)
@@ -109,6 +110,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("BACKGROUND NAME: " + allBackgrounds[backgroundIndex].name);
         SendBackgroundToBack();
         ChangeEnemy(enemySprites[currentLevel - 1]);
+
+        Player.Instance.SetHandVisible();
         
         Debug.Log("Before SetActive - Enemy active: " + Enemy.Instance.gameObject.activeSelf);
         Debug.Log("Before SetActive - Canvas active: " + canvasObject.activeSelf);
