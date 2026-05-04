@@ -142,8 +142,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: cf14164483683f54caf570a651992647, type: 3}
     volume: 0.11
   - name: Fighting
-    clip: {fileID: 8300000, guid: cf14164483683f54caf570a651992647, type: 3}
-    volume: 0.23
+    clip: {fileID: 8300000, guid: 5f8a180a8dbc51044836aa85f34cbb39, type: 3}
+    volume: 0.17
   oneShotSfxSounds:
   - name: Meow
     clip: {fileID: 8300000, guid: a2ab00d316a0ba0449f7873a01ffac81, type: 3}

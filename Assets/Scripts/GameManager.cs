@@ -138,16 +138,19 @@ public class GameManager : MonoBehaviour
         Debug.Log("=== StartLevel END ===");
     }
 
-        private IEnumerator StartLevelMusic()
+    private IEnumerator StartLevelMusic()
     {
         if (AudioManager.Instance != null)
             AudioManager.Instance.StopMusic();
 
-        // Bir frame bekle ki StopMusic işlensin
-        yield return null;
+        // Daha uzun bekle — StopMusic ve diğer init'ler tamamlansın
+        yield return new WaitForSeconds(1f);
 
         if (AudioManager.Instance != null)
+        {
             AudioManager.Instance.PlayMusic("Fighting");
+            Debug.Log("[StartLevelMusic] Fighting müziği başlatıldı");
+        }
     }
 
     private IEnumerator WaitForEnter()
