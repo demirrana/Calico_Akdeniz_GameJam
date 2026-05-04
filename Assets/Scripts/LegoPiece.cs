@@ -159,7 +159,7 @@ public class LegoPiece : MonoBehaviour
         isDragging = true;
         wasEverDragged = true;
         isSelected = true;
-
+        AudioManager.Instance.PlayOneShotSFX("LegoClick");
         // Eğer parça daha önce grid'e yerleşmişse grid'den kaldır
         if (isPlaced)
         {
@@ -247,6 +247,7 @@ public class LegoPiece : MonoBehaviour
             // Parça SİLİNMEZ, sahnede kalır, sadece eski yerine ışınlanır
             LegoBuilder.Instance.ReturnToScatter(this);
         }
+        AudioManager.Instance.PlayOneShotSFX("LegoClick");
 
         // PlacementGuide'ı gizle
         if (placementGuide != null)

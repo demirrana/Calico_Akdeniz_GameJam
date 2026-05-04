@@ -44,9 +44,9 @@ Material:
     - _BlurAmount: 0
     - _Brightness: 1.38
     - _EnableExternalAlpha: 0
-    - _MixAmount: 0
+    - _MixAmount: 0.7
     - _Saturation: 0.85
-    - _Softness: 0.0118
+    - _Softness: 0.0126
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

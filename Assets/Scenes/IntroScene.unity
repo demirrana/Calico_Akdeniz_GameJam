@@ -137,18 +137,84 @@ MonoBehaviour:
   musicSounds:
   - name: MainMenu
     clip: {fileID: 8300000, guid: af759c7720226f34e849f8f3a7bc091a, type: 3}
-    volume: 0.3
+    volume: 0.55
   - name: LegoBuilding
     clip: {fileID: 8300000, guid: cf14164483683f54caf570a651992647, type: 3}
-    volume: 0.36
+    volume: 0.24
   - name: Fighting
     clip: {fileID: 8300000, guid: cf14164483683f54caf570a651992647, type: 3}
-    volume: 0.33
+    volume: 0.23
   oneShotSfxSounds:
   - name: Meow
     clip: {fileID: 8300000, guid: a2ab00d316a0ba0449f7873a01ffac81, type: 3}
-    volume: 0.49
-  loopedSfxSounds: []
+    volume: 0.83
+  - name: BearDamaged
+    clip: {fileID: 8300000, guid: 150b93b935a902941990c14a3385b82f, type: 3}
+    volume: 1
+  - name: BearHitting
+    clip: {fileID: 8300000, guid: 20ddbd72f532de640a6466ee32ad0db7, type: 3}
+    volume: 1
+  - name: LegoClick
+    clip: {fileID: 8300000, guid: e6e9e253563fd9342aacc160593f07f5, type: 3}
+    volume: 1
+  - name: LegosSound
+    clip: {fileID: 8300000, guid: 7118ac8248807d44ba82ef94f3560b5b, type: 3}
+    volume: 1
+  - name: IWin
+    clip: {fileID: 8300000, guid: 58da4b65afa06194886cac44c64f473e, type: 3}
+    volume: 1
+  - name: BuyuKalkani
+    clip: {fileID: 8300000, guid: deca82655424f36468413d64c434c457, type: 3}
+    volume: 1
+  - name: CanBuyusu
+    clip: {fileID: 8300000, guid: bb4bab5db79cada40a8fb37019b00ad6, type: 3}
+    volume: 1
+  - name: CanAzalmadiki
+    clip: {fileID: 8300000, guid: 1a3ce9c550f0d0940828323704fbcb9f, type: 3}
+    volume: 1
+  - name: BenYaptim
+    clip: {fileID: 8300000, guid: 7480cce248483c449a749d6e27426f74, type: 3}
+    volume: 1
+  - name: EnIyi
+    clip: {fileID: 8300000, guid: b7320e6457bd4224185db426500ca14b, type: 3}
+    volume: 1
+  - name: EnGuclu
+    clip: {fileID: 8300000, guid: b4759835ff5390c4a8ca23367a699c35, type: 3}
+    volume: 1
+  - name: Kalkan
+    clip: {fileID: 8300000, guid: 8f423a61e024adf4a9bddeee5db29d7a, type: 3}
+    volume: 1
+  - name: Oley
+    clip: {fileID: 8300000, guid: 402da1b1932ddf54c8bdcccf4d9a271e, type: 3}
+    volume: 1
+  - name: Kurtaracak
+    clip: {fileID: 8300000, guid: d2fc3090d34f7a142ad53bc7b89bbbdd, type: 3}
+    volume: 1
+  - name: Senindemi
+    clip: {fileID: 8300000, guid: 0950005926179f943962716853684084, type: 3}
+    volume: 1
+  - name: Tekme
+    clip: {fileID: 8300000, guid: 99c688c3695a36f478f4da7b4c49dbbf, type: 3}
+    volume: 1
+  - name: Yumruk
+    clip: {fileID: 8300000, guid: 99c688c3695a36f478f4da7b4c49dbbf, type: 3}
+    volume: 1
+  - name: Vuramazsin
+    clip: {fileID: 8300000, guid: fb47fe7109230a644a36ca2bde0358d1, type: 3}
+    volume: 1
+  - name: BenCocuk
+    clip: {fileID: 8300000, guid: f4f021f8acda0e9418546df0febd55c1, type: 3}
+    volume: 1
+  - name: HeheEvet
+    clip: {fileID: 8300000, guid: 19637647d44bdd247a2f3edadc78c692, type: 3}
+    volume: 1
+  - name: EvetVardi
+    clip: {fileID: 8300000, guid: 162badd678678fa4a9631898a4614b90, type: 3}
+    volume: 1
+  loopedSfxSounds:
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
   musicFadeDuration: 0.5
   loopedSfxFadeDuration: 0.5
 --- !u!114 &1767689548
@@ -166,9 +232,9 @@ MonoBehaviour:
   background: {fileID: 4687638922768547250}
   logo: {fileID: 82341401896381677}
   teamText: {fileID: 7352580316793003128}
-  fadeInDuration: 1.5
-  displayDuration: 4
-  fadeOutDuration: 1
+  fadeInDuration: 1
+  displayDuration: 1.5
+  fadeOutDuration: 0.5
 --- !u!114 &82341401896381677
 MonoBehaviour:
   m_ObjectHideFlags: 0
