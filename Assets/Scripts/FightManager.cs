@@ -148,6 +148,10 @@ public class FightManager : MonoBehaviour
         Fighter targetFighter = fighter == Player.Instance ? Enemy.Instance : Player.Instance;
 
         if (fighter == Player.Instance)
+        {
+            //stop animating defense
+            fighter.StopAnimatingDefense();
+
             foreach (Button skillButton in skillButtons)
             {
                 skillButton.onClick.RemoveAllListeners();
@@ -159,8 +163,11 @@ public class FightManager : MonoBehaviour
                     ClearAllButtonListeners();
                 });
             }
+        }
         else //do Enemy's Fight method in here
         {
+            fighter.StopAnimatingDefense();
+            
             Skill chosenSkill = Enemy.Instance.DecideOnAndGetSkill();
             fighter.OnSkillChosen += ChooseFighterSkill;
             fighter.RaiseOnSkillChosen(this, fighter, targetFighter, chosenSkill);

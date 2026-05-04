@@ -81,6 +81,11 @@ public class Fighter : MonoBehaviour
         
     }
 
+    public void StopAnimatingDefense()
+    {
+        fighterAnimator.SetBool(IsDefending, false);
+    }
+
     public void RaiseOnSkillChosen(object sender, Fighter fighter, Fighter targetFighter, Skill skill)
     {
         Debug.Log("5: RaiseOnSkillChosen. fighter:" + fighter.name + ", target:" + targetFighter.name + ", skill:" + skill.name);
